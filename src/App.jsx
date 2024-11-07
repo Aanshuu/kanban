@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import KanbanBoard from "./components/KanbanBoard/KanbanBoard";
-import GroupSelector from "./components/Selectors/GroupSelector";
-import SortSelector from "./components/Selectors/SortSelector";
+import DropdownMenu from "./components/DropdownMenu/DropdownMenu";
 import useFetchData from "./hooks/useFetchData";
 import { saveToLocalStorage, loadFromLocalStorage } from "./utils/localStorage";
 import "./App.css";
@@ -24,14 +23,20 @@ const App = () => {
   }
   return (
     <div className="App">
-      <GroupSelector groupBy={groupBy} setGroupBy={setGroupBy} />
-      <SortSelector sortOptions={sortOption} setSortOption={setSortOption} />
-      <KanbanBoard
-        tickets={tickets}
+      <DropdownMenu
         groupBy={groupBy}
+        setGroupBy={setGroupBy}
         sortOption={sortOption}
-        users={users}
+        setSortOption={setSortOption}
       />
+      <div className="content">
+        <KanbanBoard
+          tickets={tickets}
+          groupBy={groupBy}
+          sortOption={sortOption}
+          users={users}
+        />
+      </div>
     </div>
   );
 };
