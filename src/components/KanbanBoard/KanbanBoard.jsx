@@ -4,8 +4,8 @@ import groupTickets from "../../utils/groupTickets";
 import sortTickets from "../../utils/sortTickets";
 import "./KanbanBoard.css";
 
-const KanbanBoard = ({ tickets, groupBy, sortOption }) => {
-  const groupedTickets = groupTickets(sortTickets(tickets, sortOption), groupBy);
+const KanbanBoard = ({ tickets, groupBy, sortOption, users }) => {
+  const groupedTickets = groupTickets(sortTickets(tickets, sortOption), groupBy, users);
 
   return (
     <div className="kanban-board">
@@ -13,7 +13,7 @@ const KanbanBoard = ({ tickets, groupBy, sortOption }) => {
         <div key={group} className="kanban-column">
           <h3>{group}</h3>
           {groupedTickets[group].map((ticket) => (
-            <TicketCard key={ticket.id} ticket={ticket} />
+            <TicketCard key={ticket.id} ticket={ticket} users={users} />
           ))}
         </div>
       ))}

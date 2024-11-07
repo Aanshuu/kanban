@@ -36,6 +36,7 @@ const App = () => {
         tickets={tickets}
         groupBy={groupBy}
         sortOption={sortOption}
+        users={users}
       />
     </div>
   );
