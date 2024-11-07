@@ -3,5 +3,6 @@
     padding: 8px;
     margin-bottom: 8px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 8px;
+    box-shadow: black 0px 0px 1px;
   }

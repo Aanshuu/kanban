@@ -3,8 +3,20 @@
     gap: 16px;
   }
   .kanban-column {
-    background: #f4f4f4;
     padding: 16px;
     border-radius: 8px;
     flex: 1;
+  }
+  .kanban-column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .column-header-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-right: 2px;
   }
