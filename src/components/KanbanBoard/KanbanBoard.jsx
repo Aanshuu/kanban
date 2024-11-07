@@ -5,6 +5,14 @@ import sortTickets from "../../utils/sortTickets";
 import "./KanbanBoard.css";
 import dot_menu from "../../assets/dot_menu.svg";
 import add from "../../assets/add.svg";
+import no_priority from "../../assets/no_priority.svg";
+import low_priority from "../../assets/low_priority.svg";
+import medium_priority from "../../assets/medium_priority.svg";
+import high_priority from "../../assets/high_priority.svg";
+import urgent_priority from "../../assets/priority_colored.svg";
+import todo from "../../assets/todo.svg";
+import in_progress from "../../assets/in_progress.svg";
+import Backlog from "../../assets/Backlog.svg";
 
 const KanbanBoard = ({ tickets, groupBy, sortOption, users }) => {
   const groupedTickets = groupTickets(
@@ -12,18 +20,72 @@ const KanbanBoard = ({ tickets, groupBy, sortOption, users }) => {
     groupBy,
     users
   );
+
   const getPriorityLabel = (priority) => {
     switch (priority) {
       case 1:
-        return "Low";
+        return (
+          <>
+            <img src={low_priority} alt="Low Priority" className="priority-icon" />
+            Low
+          </>
+        );
       case 2:
-        return "Medium";
+        return (
+          <>
+            <img src={medium_priority} alt="Medium Priority" className="priority-icon" />
+            Medium
+          </>
+        );
       case 3:
-        return "High";
+        return (
+          <>
+            <img src={high_priority} alt="High Priority" className="priority-icon" />
+            High
+          </>
+        );
       case 4:
-        return "Urgent";
+        return (
+          <>
+            <img src={urgent_priority} alt="Urgent Priority" className="priority-icon" />
+            Urgent
+          </>
+        );
       default:
-        return "No Priority";
+        return (
+          <>
+            <img src={no_priority} alt="No Priority" className="priority-icon" />
+            No Priority
+          </>
+        );
+    }
+  };
+
+  const getStatusLabel = (status) => {
+    switch (status) {
+      case "Todo":
+        return (
+          <>
+            <img src={todo} alt="To Do" className="status-icon" />
+            To Do
+          </>
+        );
+      case "In progress":
+        return (
+          <>
+            <img src={in_progress} alt="In Progress" className="status-icon" />
+            In Progress
+          </>
+        );
+      case "Backlog":
+        return (
+          <>
+            <img src={Backlog} alt="Backlog" className="status-icon" />
+            Backlog
+          </>
+        );
+      default:
+        return status;
     }
   };
 
@@ -33,10 +95,14 @@ const KanbanBoard = ({ tickets, groupBy, sortOption, users }) => {
         <div key={group} className="kanban-column">
           <div className="kanban-column-header">
             <h3>
-              {groupBy === "priority" ? getPriorityLabel(Number(group)) : group}
+              {groupBy === "priority"
+                ? getPriorityLabel(Number(group))
+                : groupBy === "status"
+                ? getStatusLabel(group)
+                : group}
             </h3>
             <div>
-              <img src={add} alt="Menu" className="column-header-icon" />
+              <img src={add} alt="Add" className="column-header-icon" />
               <img src={dot_menu} alt="Menu" className="column-header-icon" />
             </div>
           </div>

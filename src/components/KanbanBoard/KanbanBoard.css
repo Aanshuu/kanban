@@ -1,22 +1,54 @@
 .kanban-board {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+}
+
+.kanban-column {
+  padding: 16px;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 280px; /* Ensure columns don't get too narrow */
+  box-sizing: border-box;
+}
+
+.kanban-column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.column-header-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-right: 2px;
+}
+
+.priority-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.status-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+  vertical-align: middle;
+}
+
+/* Media query for mobile view */
+@media (max-width: 768px) {
+  .kanban-board {
+    flex-direction: column;
   }
+
   .kanban-column {
-    padding: 16px;
-    border-radius: 8px;
-    flex: 1;
+    width: 100%;
+    margin-bottom: 16px;
   }
-  .kanban-column-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .column-header-icon {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    margin-right: 2px;
-  }
+}
