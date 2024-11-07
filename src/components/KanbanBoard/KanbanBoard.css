@@ -1,0 +1,10 @@
+.kanban-board {
+    display: flex;
+    gap: 16px;
+  }
+  .kanban-column {
+    background: #f4f4f4;
+    padding: 16px;
+    border-radius: 8px;
+    flex: 1;
+  }
