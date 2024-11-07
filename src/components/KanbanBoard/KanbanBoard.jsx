@@ -100,7 +100,8 @@ const KanbanBoard = ({ tickets, groupBy, sortOption, users }) => {
                 ? getPriorityLabel(Number(group))
                 : groupBy === "status"
                 ? getStatusLabel(group)
-                : group}
+                : group}{" "}
+              ({groupedTickets[group].length})
             </h3>
             <div>
               <img src={add} alt="Add" className="column-header-icon" />
