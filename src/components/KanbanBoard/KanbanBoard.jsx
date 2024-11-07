@@ -21,6 +21,7 @@ const KanbanBoard = ({ tickets, groupBy, sortOption, users }) => {
     users
   );
 
+  // got a bit messy for adding image in the header didn't plan out before
   const getPriorityLabel = (priority) => {
     switch (priority) {
       case 1:

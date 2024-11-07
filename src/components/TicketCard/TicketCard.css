@@ -1,8 +1,46 @@
 .ticket-card {
-    background: #fff;
-    padding: 8px;
-    margin-bottom: 8px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: black 0px 0px 1px;
-  }
+  background: #fff;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: black 0px 0px 1px;
+}
+
+.priority-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.status-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.tag-container {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.tag-box {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  font-size: 12px;
+}
+
+.tag-circle {
+  width: 10px;
+  height: 10px;
+  background-color: gray;
+  border-radius: 50%;
+  margin-right: 8px;
+}
