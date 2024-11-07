@@ -26,7 +26,7 @@ const TicketCard = ({ ticket, users, groupBy }) => {
       <h4>{ticket.title}</h4>
       {groupBy !== "priority" && <p>Priority: {getPriorityLabel(ticket.priority)}</p>}
       {groupBy !== "status" && <p>Status: {ticket.status}</p>}
-      {groupBy !== "user" && <p>User: {userName}</p>}
+      {groupBy !== "user" && <p>Assigned: {userName}</p>}
       <p>{ticket.tag}</p>
     </div>
   );
