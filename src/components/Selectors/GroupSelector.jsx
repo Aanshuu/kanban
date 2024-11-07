@@ -1,9 +1,13 @@
 import React from "react";
 import "./selectors.css";
 
-const GroupSelector = ({ setGroupBy }) => {
+const GroupSelector = ({ groupBy, setGroupBy }) => {
+  const handleChange = (e) => {
+    setGroupBy(e.target.value);
+  };
+
   return (
-    <select onChange={(e) => setGroupBy(e.target.value)} className="selector">
+    <select value={groupBy} onChange={handleChange} className="selector">
       <option value="status">Status</option>
       <option value="user">User</option>
       <option value="priority">Priority</option>

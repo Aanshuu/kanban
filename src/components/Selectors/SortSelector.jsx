@@ -1,9 +1,9 @@
 import React from "react";
 import "./selectors.css";
 
-const SortSelector = ({ setSortOption }) => {
+const SortSelector = ({ sortOptions, setSortOption }) => {
   return (
-    <select onChange={(e) => setSortOption(e.target.value)} className="selector">
+    <select value={sortOptions} onChange={(e) => setSortOption(e.target.value)} className="selector">
       <option value="priority">Priority</option>
       <option value="title">Title</option>
     </select>
