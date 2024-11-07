@@ -1,43 +1,44 @@
-import React from 'react';
-import useFetchData from './hooks/useFetchData';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import KanbanBoard from "./components/KanbanBoard/KanbanBoard";
+import GroupSelector from "./components/Selectors/GroupSelector";
+import SortSelector from "./components/Selectors/SortSelector";
+import useFetchData from "./hooks/useFetchData";
+import "./App.css";
 
-function App() {
-  const { tickets, users } = useFetchData();
+const App = () => {
+  const [groupBy, setGroupBy] = useState("status");
+  const [sortOption, setSortOption] = useState("priority");
+  const { tickets, users, loading, error } = useFetchData();
 
-  // if (loading) {
-  //   return <div className="App">Loading...</div>;
-  // }
+  useEffect(() => {
+    const savedGroupBy = localStorage.getItem("groupBy") || "status";
+    const savedSortOption = localStorage.getItem("sortOption") || "priority";
+    setGroupBy(savedGroupBy);
+    setSortOption(savedSortOption);
+  }, []);
 
-  // if (error) {
-  //   return <div className="App">Error: {error.message}</div>;
-  // }
+  useEffect(() => {
+    localStorage.setItem("groupBy", groupBy);
+    localStorage.setItem("sortOption", sortOption);
+  }, [groupBy, sortOption]);
 
+  if (loading) {
+    return <div className="App">...Loading</div>;
+  }
+  if (error) {
+    return <div className="App">Error: {error.message}</div>;
+  }
   return (
     <div className="App">
-      <h1>Tickets</h1>
-      <ul>
-        {tickets.map((ticket) => (
-          <li key={ticket.id}>
-            <strong>Title:</strong> {ticket.title} <br />
-            <strong>Status:</strong> {ticket.status} <br />
-            <strong>Priority:</strong> {ticket.priority} <br />
-            <strong>User ID:</strong> {ticket.userId}
-          </li>
-        ))}
-      </ul>
-      
-      <h2>Users</h2>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            <strong>Name:</strong> {user.name} <br />
-            <strong>Available:</strong> {user.available ? "Yes" : "No"}
-          </li>
-        ))}
-      </ul>
+      <GroupSelector setGroupBy={setGroupBy} />
+      <SortSelector setSortOption={setSortOption} />
+      <KanbanBoard
+        tickets={tickets}
+        groupBy={groupBy}
+        sortOption={sortOption}
+      />
     </div>
   );
-}
+};
 
 export default App;
